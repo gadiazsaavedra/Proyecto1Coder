@@ -22,9 +22,8 @@ def cuantosAniosTengo(request, edad):
     return HttpResponse(f"Tengo {edad} años de edad y naci en el {anio} <br><br>{fecha}")
 
 def probandoTemplate(request):
-    miHTML = open("C:/Users/gdiaz/OneDrive/GOOGLE DRIVE/Gustavo/Curso programacion/Coder House/play Ground/DjangoTest1/Proyecto1/Proyecto1/Plantillas/template1.html")
-    plantilla = Template(miHTML.read())
-    miHTML.close()
+    with open("C:/Users/gdiaz/OneDrive/GOOGLE DRIVE/Gustavo/Curso programacion/Coder House/play Ground/DjangoTest1/Proyecto1/Proyecto1/Plantillas/template1.html") as miHTML:
+        plantilla = Template(miHTML.read())
     miContexto = Context({"nombre": "Gustavo", "apellido": "Diaz", "edad": "22"})
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
